@@ -1,0 +1,20 @@
+{
+  "name": "apix2019-microservice-crawler-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/joi": "15.0.3",
+    "amqplib": "0.5.3",
+    "cheerio": "1.0.0-rc.3",
+    "dotenv": "8.0.0",
+    "lokijs-promise": "1.0.4",
+    "puppeteer": "1.15.0"
+  }
+}
