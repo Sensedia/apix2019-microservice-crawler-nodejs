@@ -3,10 +3,10 @@
 Para rodar:
 
 1. adicionar um arquivo .env com as seguintes variáveis de ambiente: 
-RABBIT_SERVER=<IP do Rabbit>
-RABBIT_KIT_QUEUE=apix-kit-queue
-RABBIT_SPECIFICATION_QUEUE=apix-specification-queue
-RABBIT_RECOMMENDATION_QUEUE=apix-recommendation-queue
+</br>RABBIT_SERVER= *IP do Rabbit*
+</br>RABBIT_KIT_QUEUE=apix-kit-queue
+</br>RABBIT_SPECIFICATION_QUEUE=apix-specification-queue
+</br>RABBIT_RECOMMENDATION_QUEUE=apix-recommendation-queue
 
 2. npm start
 
