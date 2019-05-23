@@ -7,6 +7,10 @@
     "start": "node app.js"
   },
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sensedia/apix2019-microservice-crawler-nodejs.git"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -16,5 +20,9 @@
     "dotenv": "8.0.0",
     "lokijs-promise": "1.0.4",
     "phin": "3.3.0"
+  },
+  "engines": {
+    "node": ">=12.2.0",
+    "npm": ">=6.9.0"
   }
 }

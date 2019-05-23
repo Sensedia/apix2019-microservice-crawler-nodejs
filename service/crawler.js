@@ -16,7 +16,6 @@ function amazonCallback(html, url, gender, searchDate, specification) {
     const data = [];
     const $ = cheerio.load(html);
     $('div[data-index]').each((index, item) => {
-        console.log('[store: amazon, index: %s]----------------', index);
         data.push(createRecommendation(specification.getType(),
                                        $(item).find('img[data-image-load]').attr('alt'),
                                        parsePrice(getValue($(item).find('span[class=a-offscreen]').first().text(), $(item).find('span[class=a-color-base]').first().text())),
@@ -26,6 +25,7 @@ function amazonCallback(html, url, gender, searchDate, specification) {
                                        searchDate,
                                        gender));
     });
+    console.log('[store: amazon, count: %s recommendations]----------------', data.length);
     return data;
 };
 
@@ -33,7 +33,6 @@ function dafitiCallback(html, url, gender, searchDate, specification) {
     const data = [];
     const $ = cheerio.load(html);
     $('.product-box').each((index, item) => {
-        console.log('[store: dafiti, index: %s]----------------', index);
         const image = $(item).find('img[class=product-image]');
         if (image.attr('alt')) {
             data.push(createRecommendation(specification.getType(),
@@ -46,6 +45,7 @@ function dafitiCallback(html, url, gender, searchDate, specification) {
                                            gender));
         }
     });
+    console.log('[store: dafiti, count: %s recommendations]----------------', data.length);
     return data;
 };
 
@@ -53,7 +53,6 @@ function marisaCallback(html, url, gender, searchDate, specification) {
     const data = [];
     const $ = cheerio.load(html);
     $('.nm-product-item').each((index, item) => {
-        console.log('[store: marisa, index: %s]----------------', index);
         data.push(createRecommendation(specification.getType(),
                                        $(item).attr('data-name'),
                                        parsePrice($(item).find('span[class=price-number]').text()),
@@ -63,6 +62,7 @@ function marisaCallback(html, url, gender, searchDate, specification) {
                                        searchDate,
                                        gender));
     });
+    console.log('[store: marisa, count: %s recommendations]----------------', data.length);
     return data;
 };
 
@@ -70,7 +70,6 @@ function pernambucanasCallback(html, url, gender, searchDate, specification) {
     const data = [];
     const $ = cheerio.load(html);
     $('.item.product.product-item').each((index, item) => {
-        console.log('[store: pernambucanas, index: %s]----------------', index);
         data.push(createRecommendation(specification.getType(),
                                        $(item).find('img').attr('alt'),
                                        parsePrice($(item).find('span[class=price]').text()),
@@ -80,6 +79,7 @@ function pernambucanasCallback(html, url, gender, searchDate, specification) {
                                        searchDate,
                                        gender));
     });
+    console.log('[store: pernambucanas, count: %s recommendations]----------------', data.length);
     return data;
 };
 
@@ -89,7 +89,6 @@ function rennerCallback(html, url, gender, searchDate, specification) {
     $('.item_product').each((index, item) => {
         const image = resolveLink('img', $(item).find('figure>img').attr('src'));
         if (image) {
-            console.log('[store: renner, index: %s]----------------', index);
             data.push(createRecommendation(specification.getType(),
                                            $(item).find('h4[class=name_product]').text().trim(),
                                            parsePrice($(item).find('.best_price').text().trim()),
@@ -100,6 +99,7 @@ function rennerCallback(html, url, gender, searchDate, specification) {
                                            gender));
         }
     });
+    console.log('[store: renner, count: %s recommendations]----------------', data.length);
     return data;
 };
 
@@ -107,7 +107,6 @@ function zoomCallback(html, url, gender, searchDate, specification) {
     const data = [];
     const $ = cheerio.load(html);
     $('.item.tp-offer').each((index, item) => {
-        console.log('[store: zoom, index: %s]----------------', index)
         data.push(createRecommendation(specification.getType(),
                                        $(item).find('a.lbt.name-link').text(),
                                        parsePrice($(item).find('a.lbt.price').text()),
@@ -117,6 +116,7 @@ function zoomCallback(html, url, gender, searchDate, specification) {
                                        searchDate,
                                        gender));
     });
+    console.log('[store: zoom, count: %s recommendations]----------------', data.length);
     return data;
 };
 

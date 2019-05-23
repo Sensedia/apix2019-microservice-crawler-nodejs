@@ -1,4 +1,4 @@
-const phin = require('phin')
+const phin = require('phin');
 
 async function search(url, callback, gender, specification) {
     const response = await phin(url.getCompleteUrl());

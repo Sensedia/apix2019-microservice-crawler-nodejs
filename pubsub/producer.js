@@ -9,8 +9,6 @@ function producer(channel, queue, obj) {
 
     channel.sendToQueue(queue, encode(obj));
 
-    console.log(" [x] Sent %s", obj);
-
 }
 
 function senderKit(obj) {
