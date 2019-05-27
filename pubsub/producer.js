@@ -1,5 +1,5 @@
 const channel = require('./channel');
-const { RABBIT_SPECIFICATION_QUEUE, RABBIT_RECOMMENDATION_QUEUE } = require('../config/config');
+const { RABBIT_SPECIFICATION_QUEUE, RABBIT_SUGGESTION_QUEUE } = require('../config/config');
 
 const encode = obj => Buffer.from(JSON.stringify(obj));
 
@@ -17,8 +17,8 @@ function senderKit(obj) {
 }
 
 function senderRecommendation(obj) {
-    console.log(`Sending ${obj.length} recommendations`);
-    channel(producer, RABBIT_RECOMMENDATION_QUEUE, obj);
+    console.log(`Sending ${obj.length} suggestions`);
+    channel(producer, RABBIT_SUGGESTION_QUEUE, obj);
 }
 
 module.exports = {
