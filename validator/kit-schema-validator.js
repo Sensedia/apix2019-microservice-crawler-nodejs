@@ -8,11 +8,11 @@ const schema = Joi.object().keys({
     specifications: Joi.array()
         .ordered(
             Joi.object().keys({
-                type: Joi.string().valid('SHIRT').required(),
+                type: Joi.string().valid('PANT').required(),
                 color: Joi.string().valid('BLACK', 'BLUE', 'WHITE').required()
             }),
             Joi.object().keys({
-                type: Joi.string().valid('PANT').required(),
+                type: Joi.string().valid('SHIRT').required(),
                 color: Joi.string().valid('BLACK', 'BLUE', 'WHITE').required()
             }),
             Joi.object().keys({
