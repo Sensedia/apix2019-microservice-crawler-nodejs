@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
 
-const createRecommendation = (type, title, price, color, link, image, date, gender) =>
+const createSuggestion = (type, title, price, color, link, image, date, gender) =>
     ({
         type: type,
         title: title,
@@ -16,7 +16,7 @@ function amazonCallback(html, url, gender, searchDate, specification) {
     const data = [];
     const $ = cheerio.load(html);
     $('div[data-index]').each((index, item) => {
-        data.push(createRecommendation(specification.getType(),
+        data.push(createSuggestion(specification.getType(),
                                        $(item).find('img[data-image-load]').attr('alt'),
                                        parsePrice(getValue($(item).find('span[class=a-offscreen]').first().text(), $(item).find('span[class=a-color-base]').first().text())),
                                        specification.getColor(),
@@ -25,7 +25,7 @@ function amazonCallback(html, url, gender, searchDate, specification) {
                                        searchDate,
                                        gender));
     });
-    console.log('[store: amazon, count: %s recommendations]----------------', data.length);
+    console.log('[store: amazon, count: %s suggestions]----------------', data.length);
     return data;
 };
 
@@ -35,7 +35,7 @@ function dafitiCallback(html, url, gender, searchDate, specification) {
     $('.product-box').each((index, item) => {
         const image = $(item).find('img[class=product-image]');
         if (image.attr('alt')) {
-            data.push(createRecommendation(specification.getType(),
+            data.push(createSuggestion(specification.getType(),
                                            image.attr('alt'),
                                            parsePrice(getValue($(item).find('.product-box-price-to').text(), $(item).find('.product-box-price-from').text())),
                                            specification.getColor(),
@@ -45,7 +45,7 @@ function dafitiCallback(html, url, gender, searchDate, specification) {
                                            gender));
         }
     });
-    console.log('[store: dafiti, count: %s recommendations]----------------', data.length);
+    console.log('[store: dafiti, count: %s suggestions]----------------', data.length);
     return data;
 };
 
@@ -53,7 +53,7 @@ function marisaCallback(html, url, gender, searchDate, specification) {
     const data = [];
     const $ = cheerio.load(html);
     $('.nm-product-item').each((index, item) => {
-        data.push(createRecommendation(specification.getType(),
+        data.push(createSuggestion(specification.getType(),
                                        $(item).attr('data-name'),
                                        parsePrice($(item).find('span[class=price-number]').text()),
                                        specification.getColor(),
@@ -62,7 +62,7 @@ function marisaCallback(html, url, gender, searchDate, specification) {
                                        searchDate,
                                        gender));
     });
-    console.log('[store: marisa, count: %s recommendations]----------------', data.length);
+    console.log('[store: marisa, count: %s suggestions]----------------', data.length);
     return data;
 };
 
@@ -70,7 +70,7 @@ function pernambucanasCallback(html, url, gender, searchDate, specification) {
     const data = [];
     const $ = cheerio.load(html);
     $('.item.product.product-item').each((index, item) => {
-        data.push(createRecommendation(specification.getType(),
+        data.push(createSuggestion(specification.getType(),
                                        $(item).find('img').attr('alt'),
                                        parsePrice($(item).find('span[class=price]').text()),
                                        specification.getColor(),
@@ -79,7 +79,7 @@ function pernambucanasCallback(html, url, gender, searchDate, specification) {
                                        searchDate,
                                        gender));
     });
-    console.log('[store: pernambucanas, count: %s recommendations]----------------', data.length);
+    console.log('[store: pernambucanas, count: %s suggestions]----------------', data.length);
     return data;
 };
 
@@ -89,7 +89,7 @@ function rennerCallback(html, url, gender, searchDate, specification) {
     $('.item_product').each((index, item) => {
         const image = resolveLink('img', $(item).find('figure>img').attr('src'));
         if (image) {
-            data.push(createRecommendation(specification.getType(),
+            data.push(createSuggestion(specification.getType(),
                                            $(item).find('h4[class=name_product]').text().trim(),
                                            parsePrice($(item).find('.best_price').text().trim()),
                                            specification.getColor(),
@@ -99,7 +99,7 @@ function rennerCallback(html, url, gender, searchDate, specification) {
                                            gender));
         }
     });
-    console.log('[store: renner, count: %s recommendations]----------------', data.length);
+    console.log('[store: renner, count: %s suggestions]----------------', data.length);
     return data;
 };
 
@@ -107,7 +107,7 @@ function zoomCallback(html, url, gender, searchDate, specification) {
     const data = [];
     const $ = cheerio.load(html);
     $('.item.tp-offer').each((index, item) => {
-        data.push(createRecommendation(specification.getType(),
+        data.push(createSuggestion(specification.getType(),
                                        $(item).find('a.lbt.name-link').text(),
                                        parsePrice($(item).find('a.lbt.price').text()),
                                        specification.getColor(),
@@ -116,7 +116,7 @@ function zoomCallback(html, url, gender, searchDate, specification) {
                                        searchDate,
                                        gender));
     });
-    console.log('[store: zoom, count: %s recommendations]----------------', data.length);
+    console.log('[store: zoom, count: %s suggestions]----------------', data.length);
     return data;
 };
 

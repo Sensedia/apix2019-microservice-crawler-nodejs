@@ -2,7 +2,7 @@ const Joi = require('@hapi/joi');
 const KitInvalido = require('../errors/kit-invalido')
 
 const schema = Joi.object().keys({
-    id: Joi.number().integer().required(),
+    id: Joi.string().guid().required(),
     gender: Joi.string().length(1).required(),
     phone: Joi.string().required(),
     specifications: Joi.array()
@@ -16,7 +16,7 @@ const schema = Joi.object().keys({
                 color: Joi.string().valid('BLACK', 'BLUE', 'WHITE').required()
             }),
             Joi.object().keys({
-                type: Joi.string().valid('SHOE').required(),
+                type: Joi.string().valid('SHOES').required(),
                 color: Joi.string().valid('BLACK', 'BLUE', 'WHITE').required()
             }))
         .length(3)

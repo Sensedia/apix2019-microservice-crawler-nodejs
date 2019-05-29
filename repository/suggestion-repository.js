@@ -1,7 +1,7 @@
 const { getCollection, initDB } = require('lokijs-promise');
 
 initDB(`${__dirname}/db.json`);
-const COLLECTION_NAME = 'recommendation';
+const COLLECTION_NAME = 'suggestion';
 
 const has = async (gender, type, color) => {
 

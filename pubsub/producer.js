@@ -16,12 +16,12 @@ function senderKit(obj) {
     channel(producer, RABBIT_SPECIFICATION_QUEUE, obj);
 }
 
-function senderRecommendation(obj) {
+function senderSuggestion(obj) {
     console.log(`Sending ${obj.length} suggestions`);
     channel(producer, RABBIT_SUGGESTION_QUEUE, obj);
 }
 
 module.exports = {
     senderKit,
-    senderRecommendation
+    senderSuggestion
 }

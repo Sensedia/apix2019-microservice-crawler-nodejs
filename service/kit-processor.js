@@ -2,8 +2,8 @@ const URL = require('../model/url');
 const search = require('./kit-search');
 const kitResolver = require('../resolver/kit-resolver');
 const urlResolver = require('../resolver/url-resolver');
-const { senderKit, senderRecommendation } = require('../pubsub/producer');
-const recommendationRepository = require('../repository/recommendation-repository');
+const { senderKit, senderSuggestion } = require('../pubsub/producer');
+const suggestionRepository = require('../repository/suggestion-repository');
 const { amazonCallback, dafitiCallback, marisaCallback, pernambucanasCallback, rennerCallback, zoomCallback } = require('./crawler');
 
 async function processor(message) {
@@ -19,9 +19,9 @@ async function processor(message) {
 
             for (const specification of kit.getSpecifications()) {
 
-                const hasRecommendation = await recommendationRepository.has(kit.getGender(), specification.getType(), specification.getColor());
-                if (hasRecommendation) {
-                    console.log('Recommendation existing');
+                const hasSuggestion = await suggestionRepository.has(kit.getGender(), specification.getType(), specification.getColor());
+                if (hasSuggestion) {
+                    console.log('Suggestion existing');
                     continue;
                 }
 
@@ -49,12 +49,12 @@ async function processor(message) {
                 const zoom = new URL('https://www.zoom.com.br', zoomResource);
                 data.push(... await search(zoom, zoomCallback, kit.getGender(), specification));
 
-                await recommendationRepository.save(kit.getGender(), specification.getType(), specification.getColor())
+                await suggestionRepository.save(kit.getGender(), specification.getType(), specification.getColor())
 
             }
 
             if (data.length) {
-                senderRecommendation(data);
+                senderSuggestion(data);
                 senderKit(kit.getImmutableObject());
             }
 
