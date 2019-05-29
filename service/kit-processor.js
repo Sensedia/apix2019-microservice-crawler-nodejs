@@ -55,9 +55,9 @@ async function processor(message) {
 
             if (data.length) {
                 senderSuggestion(data);
-                senderKit(kit.getImmutableObject());
             }
 
+            senderKit(kit.getImmutableObject());
         }
 
     } catch (err) {
