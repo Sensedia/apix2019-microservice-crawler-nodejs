@@ -9,15 +9,15 @@ const schema = Joi.object().keys({
         .ordered(
             Joi.object().keys({
                 type: Joi.string().valid('PANT').required(),
-                color: Joi.string().valid('BLACK', 'BLUE', 'WHITE').required()
+                color: Joi.string().valid('BLACK', 'BLUE', 'BROWN', 'GREEN', 'GREY', 'ORANGE', 'PINK', 'PURPLE', 'RED', 'WHITE', 'YELLOW').required()
             }),
             Joi.object().keys({
                 type: Joi.string().valid('SHIRT').required(),
-                color: Joi.string().valid('BLACK', 'BLUE', 'WHITE').required()
+                color: Joi.string().valid('BLACK', 'BLUE', 'BROWN', 'GREEN', 'GREY', 'ORANGE', 'PINK', 'PURPLE', 'RED', 'WHITE', 'YELLOW').required()
             }),
             Joi.object().keys({
                 type: Joi.string().valid('SHOES').required(),
-                color: Joi.string().valid('BLACK', 'BLUE', 'WHITE').required()
+                color: Joi.string().valid('BLACK', 'BLUE', 'BROWN', 'GREEN', 'GREY', 'ORANGE', 'PINK', 'PURPLE', 'RED', 'WHITE', 'YELLOW').required()
             }))
         .length(3)
         .required()
