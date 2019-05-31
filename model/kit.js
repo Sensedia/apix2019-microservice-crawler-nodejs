@@ -1,3 +1,5 @@
+const genderEnum = require('../enums/genderEnum');
+
 module.exports = class Kit {
 
     #id;
@@ -25,10 +27,7 @@ module.exports = class Kit {
     }
 
     getGenderDesc() {
-        if (this.#gender === 'F') {
-            return 'feminino';
-        }
-        return 'masculino';
+        return genderEnum[this.#gender];
     }
 
     getSpecifications() {

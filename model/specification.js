@@ -1,3 +1,6 @@
+const colorEnum = require('../enums/colorEnum');
+const typesEnum = require('../enums/typeEnum');
+
 module.exports = class Specification {
 
     #type;
@@ -13,13 +16,7 @@ module.exports = class Specification {
     }
 
     getTypeDesc() {
-        if (this.#type === 'SHIRT') {
-            return 'camisa';
-        }
-        if (this.#type === 'PANT') {
-            return 'calça';
-        }
-        return 'tênis';
+        return typesEnum[this.#type];
     }
 
     getColor() {
@@ -27,13 +24,7 @@ module.exports = class Specification {
     }
 
     getColorDesc() {
-        if (this.#color === 'BLACK') {
-            return 'preta';
-        }
-        if (this.#color === 'BLUE') {
-            return 'azul';
-        }
-        return 'branca';
+        return colorEnum[this.#color];
     }
 
 }
