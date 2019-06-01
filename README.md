@@ -1,14 +1,26 @@
-# apix2019-microservice-crawler-nodejs
+# apix2019-microservice-crawler-nodejs :mag:
 
-Para rodar:
+### Como executar via docker:
 
-1. adicionar um arquivo .env com as seguintes variáveis de ambiente: 
-</br>RABBIT_SERVER=localhost
-</br>RABBIT_KIT_QUEUE=apix-kit-queue
-</br>RABBIT_SPECIFICATION_QUEUE=apix-specification-queue
-</br>RABBIT_SUGGESTION_QUEUE=apix-suggestion-queue
+1 - Execute o script 'generate-image.sh', presente na pasta raiz do projeto, para gerar a imagem docker da aplicação, junto com a imagem node;
 
-2. npm start
+2 - Entre na pasta 'docker' e edite o arquivo 'variables.sh' com as informações TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN e TWILIO_FROM_PHONE com as informações presentes em sua conta do Twilio para que o envio de mensagens seja realizado corretamente;
 
-Para gerar a imagem:
-<code>docker build --tag crawler-node:1.0.0 .</code>
+3- Execute o comando docker-start.sh para iniciar o container da aplicação;
+
+OBS: Caso tenha feito alguma alteração de código, gere novamente a imagem docker usando o comando 'generate-image.sh' e depois use o comando 'update-notification.sh', na pasta 'docker', para subir um novo container. 
+
+### Como executar localmente:
+
+1 - Edite o arquivo '.env' presente na raiz do projeto, alterando o valor da variável de ambiente RABBIT_SERVER, com o ip do container rabbitmq_apix2019
+
+2 - No terminal, acesse a pasta do projeto e execute o comando 'npm start'.
+
+### Como fazer debug da aplicação:
+
+1 - Realizar os passos da seção anterior;
+
+2 - No Visual Studio, apertar as teclas 'Ctrl+Shift+D', e próximo do campo 'Launch Program' clicar no icone da engrenagem (Open launch.json);
+
+3 - No arquivo mostrado depois de clicar no icone anterior, mudar o valor do atributo "program" para '${workspaceFolder}/worker.js'
+
