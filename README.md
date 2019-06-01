@@ -10,9 +10,9 @@ OBS: Caso tenha feito alguma alteração de código, gere novamente a imagem doc
 
 ### Como executar localmente:
 
-1 - Edite o arquivo '.env' presente na raiz do projeto, alterando o valor da variável de ambiente RABBIT_SERVER, com o ip do container rabbitmq_apix2019
+1 - Edite o arquivo '.env' presente na raiz do projeto, alterando o valor da variável de ambiente RABBIT_SERVER, com o ip do container rabbitmq_apix2019;
 
-2 - No terminal, acesse a pasta do projeto e execute o comando 'npm start'.
+2 - No terminal, acesse a pasta do projeto e execute o comando 'npm start';
 
 *Para descobrir o ip do container, execute o seguinte comando: docker inspect <container_name>. Valor: IPAddress.
 
@@ -22,5 +22,5 @@ OBS: Caso tenha feito alguma alteração de código, gere novamente a imagem doc
 
 2 - No Visual Studio, apertar as teclas 'Ctrl+Shift+D', e próximo do campo 'Launch Program' clicar no icone da engrenagem (Open launch.json);
 
-3 - No arquivo mostrado depois de clicar no icone anterior, mudar o valor do atributo "program" para '${workspaceFolder}/worker.js'
+3 - No arquivo mostrado depois de clicar no icone anterior, mudar o valor do atributo "program" para '${workspaceFolder}/worker.js'.
 
