@@ -29,7 +29,7 @@ $ npm start
 
 Opção 1 - Para testar o fluxo completo, acesse o README do microserviço de kit e inicie criando um kit, fazendo o post descrito lá.
 
-Opção 2 - Para testar somente a parte da busca do crawler (sem ter que passar pelo fluxo completo), você pode postar uma mensagem diretamente no rabbit, na fila 'apix-specification-queue' com o seguinte payload:
+Opção 2 - Para testar somente a parte da busca do crawler (sem ter que passar pelo fluxo completo), você pode postar uma mensagem diretamente no rabbit, na fila 'apix-kit-queue' com o seguinte payload:
 
 ```
 {
