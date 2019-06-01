@@ -4,7 +4,7 @@
 
 1 - Execute o script 'generate-image.sh', presente na pasta raiz do projeto, para gerar a imagem docker da aplicação, junto com a imagem node;
 
-2 - Execute o comando docker-start.sh para iniciar o container da aplicação;
+2 - Execute o script 'docker-start.sh' para iniciar o container da aplicação;
 
 OBS: Caso tenha feito alguma alteração de código e queira vê-la refletida na aplicação, repita os dois passos anteriores. 
 
