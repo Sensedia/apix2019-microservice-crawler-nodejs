@@ -6,7 +6,7 @@
 
 2 - Execute o script 'docker-start.sh' para iniciar o container da aplicação;
 
-OBS: Caso tenha feito alguma alteração de código e queira vê-la refletida na aplicação, repita o primeiro passo e executa o script 'update-crawler' na sequência. 
+OBS: Caso tenha feito alguma alteração de código e queira vê-la refletida na aplicação, repita o primeiro passo e execute o script 'update-crawler' na sequência. 
 
 ### Como executar localmente:
 
