@@ -4,9 +4,7 @@
 
 1 - Execute o script 'generate-image.sh', presente na pasta raiz do projeto, para gerar a imagem docker da aplicação, junto com a imagem node;
 
-2 - Entre na pasta 'docker' e edite o arquivo 'variables.sh' com as informações TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN e TWILIO_FROM_PHONE com as informações presentes em sua conta do Twilio para que o envio de mensagens seja realizado corretamente;
-
-3- Execute o comando docker-start.sh para iniciar o container da aplicação;
+2 - Execute o comando docker-start.sh para iniciar o container da aplicação;
 
 OBS: Caso tenha feito alguma alteração de código, gere novamente a imagem docker usando o comando 'generate-image.sh' e depois use o comando 'update-notification.sh', na pasta 'docker', para subir um novo container. 
 
