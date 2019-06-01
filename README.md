@@ -14,6 +14,8 @@ OBS: Caso tenha feito alguma alteração de código, gere novamente a imagem doc
 
 2 - No terminal, acesse a pasta do projeto e execute o comando 'npm start'.
 
+*Para descobrir o ip do container, execute o seguinte comando: docker inspect <container_name>. Valor: IPAddress.
+
 ### Como fazer debug da aplicação:
 
 1 - Realizar os passos da seção anterior;
