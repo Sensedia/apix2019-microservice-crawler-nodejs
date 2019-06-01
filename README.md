@@ -6,7 +6,7 @@
 
 2 - Execute o script 'docker-start.sh' para iniciar o container da aplicação;
 
-OBS: Caso tenha feito alguma alteração de código e queira vê-la refletida na aplicação, repita os dois passos anteriores. 
+OBS: Caso tenha feito alguma alteração de código e queira vê-la refletida na aplicação, repita o primeiro passo e executa o script 'update-crawler' na sequência. 
 
 ### Como executar localmente:
 
@@ -16,6 +16,11 @@ OBS: Caso tenha feito alguma alteração de código e queira vê-la refletida na
 ```
 $ npm start
 ```
+IMPORTANTE: Caso você esteja realizando testes e queira remover o cache de busca, para repetir essa busca, execute o comando:
+```
+$ rm -rf repository/*.json*
+```
+E não se esqueça de regerar a imagem (pelo 'generate-image.sh') e atualizar o container ('update-crawler.sh');
 
 ### Como fazer debug da aplicação:
 
