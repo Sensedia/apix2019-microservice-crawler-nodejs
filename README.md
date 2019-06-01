@@ -10,13 +10,11 @@ OBS: Caso tenha feito alguma alteração de código, gere novamente a imagem doc
 
 ### Como executar localmente:
 
-1 - Edite o arquivo '.env' presente na raiz do projeto, alterando o valor da variável de ambiente RABBIT_SERVER, com o ip do container rabbitmq_apix2019;
+1 - Edite o arquivo '.env' presente na raiz do projeto, alterando o valor da variável de ambiente RABBIT_SERVER para `localhost`;
 
-2 - No terminal, acesse a pasta do projeto e execute o comando 'npm start';
-
-Para descobrir o ip do container, execute o seguinte comando (resgatar o valor IPAddress): 
+2 - Pelo terminal, acesse a pasta do projeto e execute o comando:
 ```
-$ docker inspect container_name
+$ npm start
 ```
 
 ### Como fazer debug da aplicação:
