@@ -16,11 +16,6 @@ OBS: Caso tenha feito alguma alteração de código e queira vê-la refletida na
 ```
 $ npm start
 ```
-IMPORTANTE: Caso você esteja realizando testes e queira remover o cache de busca, para repetir essa busca, execute o comando:
-```
-$ rm -rf repository/*.json*
-```
-E não se esqueça de regerar a imagem (pelo 'generate-image.sh') e atualizar o container ('update-crawler.sh');
 
 ### Como fazer debug da aplicação:
 
@@ -30,3 +25,36 @@ E não se esqueça de regerar a imagem (pelo 'generate-image.sh') e atualizar o 
 
 3 - No arquivo mostrado depois de clicar no icone anterior, mudar o valor do atributo "program" para '${workspaceFolder}/worker.js'.
 
+### Como testar se o crawler está fazendo a varredura pelos itens do kit devidamente:
+
+Opção 1 - Para testar o fluxo completo, acesse o README do microserviço de kit e inicie criando um kit, fazendo o post descrito lá.
+
+Opção 2 - Para testar somente a parte da busca do crawler (sem ter que passar pelo fluxo completo), você pode postar uma mensagem diretamente no rabbit, na fila 'apix-specification-queue' com o seguinte payload:
+
+```
+{
+   "id":5f3671ae-c0da-454b-9da3-7d22bbc068cb,
+   "phone":"+5519992911291",
+   "gender":"F",
+   "specifications":[
+      { 
+         "type":"PANT",
+         "color":"BLUE"
+      },
+      {
+         "type":"SHIRT",
+         "color":"WHITE"
+      },
+      {
+         "type":"SHOES",
+         "color":"BLACK"
+      }
+   ]
+}
+```
+
+IMPORTANTE: Este microserviço possui cache das buscas efetuadas. Para repetir uma busca passando os mesmos parâmetros, execute o comando:
+```
+$ rm -rf repository/*.json*
+```
+E não se esqueça de regerar a imagem ('generate-image.sh') e atualizar o container ('update-crawler.sh');
