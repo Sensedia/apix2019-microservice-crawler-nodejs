@@ -7,7 +7,6 @@ function resolver(object) {
     const validated = validate(object);
 
     return new Kit(validated.id,
-                   validated.phone,
                    validated.gender,
                    resolveSpecifications(validated.specifications));
 

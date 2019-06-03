@@ -5,7 +5,6 @@ const colorEnum = require('../enums/colorEnum');
 const schema = Joi.object().keys({
     id: Joi.string().guid().required(),
     gender: Joi.string().length(1).required(),
-    phone: Joi.string().required(),
     specifications: Joi.array()
         .ordered(
             Joi.object().keys({
