@@ -8,7 +8,7 @@ services:
     environment:
       RABBIT_SERVER: rabbitmq
       RABBIT_KIT_QUEUE: apix-kit-queue
-      RABBIT_SPECIFICATION_QUEUE: apix-specification-queue
+      RABBIT_PRE_SPECIFICATION_QUEUE: apix-pre-specification-queue
       RABBIT_RECOMMENDATION_QUEUE: apix-recommendation-queue
       RABBIT_SUGGESTION_QUEUE: apix-suggestion-queue
     networks:
@@ -16,4 +16,4 @@ services:
 networks:
   apix2019:
     external:
-      name: apix2019-infra_apix2019
+      name: apix2019infra_apix2019

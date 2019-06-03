@@ -18,7 +18,9 @@ const save = async (gender, type, color) => {
 
     const collection = await getCollection(COLLECTION_NAME);
     if (collection) {
-        collection.insert({ gender: gender, type: type, color: color });
+        const data = { gender: gender, type: type, color: color };
+        console.log('Caching data: ', data);
+        collection.insert(data);
     }
 
 }

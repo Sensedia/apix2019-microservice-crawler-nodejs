@@ -21,11 +21,11 @@ function amazonCallback(html, url, gender, searchDate, specification) {
                                        parsePrice(getValue($(item).find('span[class=a-offscreen]').first().text(), $(item).find('span[class=a-color-base]').first().text())),
                                        specification.getColor(),
                                        url.getHost().concat($(item).find('.a-size-base.a-link-normal.s-no-hover.a-text-normal').attr('href')),
-                                       $(item).find('img[data-image-load]').attr('src'),
+                                       resolveImage($(item).find('img[data-image-load]').attr('src')),
                                        searchDate,
                                        gender));
     });
-    console.log('[store: amazon, count: %s suggestions]----------------', data.length);
+    console.log(`[store: amazon, specification: ${specification.toString()}, count: ${data.length} suggestions]----------------`);
     return data;
 };
 
@@ -40,12 +40,12 @@ function dafitiCallback(html, url, gender, searchDate, specification) {
                                            parsePrice(getValue($(item).find('.product-box-price-to').text(), $(item).find('.product-box-price-from').text())),
                                            specification.getColor(),
                                            $(item).find('a').attr('href'),
-                                           image.attr('data-original'),
+                                           resolveImage(image.attr('data-original')),
                                            searchDate,
                                            gender));
         }
     });
-    console.log('[store: dafiti, count: %s suggestions]----------------', data.length);
+    console.log(`[store: dafiti, specification: ${specification.toString()}, count: ${data.length} suggestions]----------------`);
     return data;
 };
 
@@ -58,11 +58,11 @@ function marisaCallback(html, url, gender, searchDate, specification) {
                                        parsePrice($(item).find('span[class=price-number]').text()),
                                        specification.getColor(),
                                        resolveLink('www', $(item).find('a').attr('href')),
-                                       resolveLink('images2', $(item).find('img[class="nm-product-img"]').attr('src')),
+                                       resolveImage(resolveLink('images2', $(item).find('img[class="nm-product-img"]').attr('src'))),
                                        searchDate,
                                        gender));
     });
-    console.log('[store: marisa, count: %s suggestions]----------------', data.length);
+    console.log(`[store: marisa, specification: ${specification.toString()}, count: ${data.length} suggestions]----------------`);
     return data;
 };
 
@@ -75,11 +75,11 @@ function pernambucanasCallback(html, url, gender, searchDate, specification) {
                                        parsePrice($(item).find('span[class=price]').text()),
                                        specification.getColor(),
                                        $(item).find('.product-item-link').attr('href'),
-                                       $(item).find('img').attr('src'),
+                                       resolveImage($(item).find('img').attr('data-cfsrc')),
                                        searchDate,
                                        gender));
     });
-    console.log('[store: pernambucanas, count: %s suggestions]----------------', data.length);
+    console.log(`[store: pernambucanas, specification: ${specification.toString()}, count: ${data.length} suggestions]----------------`);
     return data;
 };
 
@@ -94,12 +94,12 @@ function rennerCallback(html, url, gender, searchDate, specification) {
                                            parsePrice($(item).find('.best_price').text().trim()),
                                            specification.getColor(),
                                            resolveLink('www', $(item).find('a[class=js-prod-link]').attr('href')),
-                                           image,
+                                           resolveImage(image),
                                            searchDate,
                                            gender));
         }
     });
-    console.log('[store: renner, count: %s suggestions]----------------', data.length);
+    console.log(`[store: renner, specification: ${specification.toString()}, count: ${data.length} suggestions]----------------`);
     return data;
 };
 
@@ -112,11 +112,11 @@ function zoomCallback(html, url, gender, searchDate, specification) {
                                        parsePrice($(item).find('a.lbt.price').text()),
                                        specification.getColor(),
                                        url.getHost().concat($(item).find('a.lbt').attr('href')),
-                                       resolveLink('i.zst', $(item).find('img').attr('src')),
+                                       resolveImage(resolveLink('i.zst', $(item).find('img').attr('src'))),
                                        searchDate,
                                        gender));
     });
-    console.log('[store: zoom, count: %s suggestions]----------------', data.length);
+    console.log(`[store: zoom, specification: ${specification.toString()}, count: ${data.length} suggestions]----------------`);
     return data;
 };
 
@@ -134,6 +134,13 @@ const parsePrice = price => {
                         .replace(' ', '')
                         .replace(',', '.');
     return parseFloat(parsed);
+}
+
+const resolveImage = image => {
+    if (image.startsWith('http://') || image.startsWith('https://')) {
+        return image;
+    }
+    return `http://${image}`;
 }
 
 const getValue = (...elements) => {

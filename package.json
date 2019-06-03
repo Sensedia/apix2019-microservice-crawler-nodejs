@@ -1,7 +1,7 @@
 {
   "name": "apix2019-microservice-crawler-nodejs",
   "version": "1.0.0",
-  "description": "",
+  "description": "apix2019 microservice crawler",
   "main": "index.js",
   "scripts": {
     "start": "node app.js"

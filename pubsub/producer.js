@@ -1,5 +1,5 @@
 const channel = require('./channel');
-const { RABBIT_SPECIFICATION_QUEUE, RABBIT_SUGGESTION_QUEUE } = require('../config/config');
+const { RABBIT_PRE_SPECIFICATION_QUEUE, RABBIT_SUGGESTION_QUEUE } = require('../config/config');
 
 const encode = obj => Buffer.from(JSON.stringify(obj));
 
@@ -13,7 +13,7 @@ function producer(channel, queue, obj) {
 
 function senderKit(obj) {
     console.log(`Sending kit`);
-    channel(producer, RABBIT_SPECIFICATION_QUEUE, obj);
+    channel(producer, RABBIT_PRE_SPECIFICATION_QUEUE, obj);
 }
 
 function senderSuggestion(obj) {

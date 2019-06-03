@@ -27,4 +27,8 @@ module.exports = class Specification {
         return colorEnum[this.#color];
     }
 
+    toString() {
+        return `{ "type": "${this.#type}", "color": "${this.#color}" }`;
+    }
+
 }

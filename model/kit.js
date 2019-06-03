@@ -31,7 +31,7 @@ module.exports = class Kit {
     }
 
     getSpecifications() {
-        return this.#specifications;
+        return [... this.#specifications];
     }
 
     getImmutableObject() {
