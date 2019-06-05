@@ -16,14 +16,17 @@ function amazonCallback(html, url, gender, searchDate, specification) {
     const data = [];
     const $ = cheerio.load(html);
     $('div[data-index]').each((index, item) => {
-        data.push(createSuggestion(specification.getType(),
-                                       $(item).find('img[data-image-load]').attr('alt'),
-                                       parsePrice(getValue($(item).find('span[class=a-offscreen]').first().text(), $(item).find('span[class=a-color-base]').first().text())),
-                                       specification.getColor(),
-                                       url.getHost().concat($(item).find('.a-size-base.a-link-normal.s-no-hover.a-text-normal').attr('href')),
-                                       resolveImage($(item).find('img[data-image-load]').attr('src')),
-                                       searchDate,
-                                       gender));
+        const price = getValue($(item).find('span[class=a-offscreen]').first().text(), $(item).find('span[class=a-color-base]').first().text());
+        if (price) {
+            data.push(createSuggestion(specification.getType(),
+                                           $(item).find('img[data-image-load]').attr('alt'),
+                                           parsePrice(price),
+                                           specification.getColor(),
+                                           url.getHost().concat($(item).find('.a-size-base.a-link-normal.s-no-hover.a-text-normal').attr('href')),
+                                           resolveImage($(item).find('img[data-image-load]').attr('src')),
+                                           searchDate,
+                                           gender));
+        }
     });
     console.log(`[store: amazon, specification: ${specification.toString()}, count: ${data.length} suggestions]----------------`);
     return data;
